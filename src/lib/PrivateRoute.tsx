@@ -7,7 +7,7 @@ const PrivateRoute: React.FC = () => {
   const { access_token } = getCookies();
 
   if (!access_token) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return (
