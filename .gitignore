@@ -1,0 +1,25 @@
+# Mac ve sistem dosyaları
+.DS_Store
+
+# Node.js
+node_modules
+dist
+dist-ssr
+
+# VS Code
+.vscode
+.idea
+
+# Cursor, Anydesk, Trace gibi
+.cursor
+.anydesk*
+*.trace
+
+# Log dosyaları
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Diğer
+*.local
