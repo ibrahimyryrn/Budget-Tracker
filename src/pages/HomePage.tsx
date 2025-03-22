@@ -27,7 +27,7 @@ function HomePage() {
 
       setTimeout(() => {
         alert("Successfully logout! Redirecting to login page...");
-        navigate("/login");
+        navigate("/");
       }, 1000);
     } catch (error) {
       console.error("Logout failed", error);
@@ -36,7 +36,7 @@ function HomePage() {
       alert(
         "Logout failed, but local session cleared. Redirecting to login page..."
       );
-      navigate("/login");
+      navigate("/");
     }
   }
 
