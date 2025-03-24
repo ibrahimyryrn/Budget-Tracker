@@ -1,4 +1,4 @@
-import { Card, CardContent } from "../ui/Card";
+import { Card, CardContent } from "./ui/SummaryCardUi";
 import { ArrowUpCircle, ArrowDownCircle, Wallet } from "lucide-react";
 import { useTransaction } from "../context/useTransaction";
 
