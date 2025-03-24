@@ -3,11 +3,15 @@ import Dashboard from "../components/Dashboard";
 import { Button } from "../components/ui/button";
 import { getCookies, removeCookies } from "../lib/cookies";
 import axios from "axios";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 function HomePage() {
   const navigate = useNavigate();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   async function handleLogout() {
+    setIsLoggingOut(true); // 👈 butonu disable eder ve loader başlar
     const { access_token } = getCookies();
 
     try {
@@ -25,10 +29,8 @@ function HomePage() {
 
       removeCookies();
 
-      setTimeout(() => {
-        alert("Successfully logout! Redirecting to login page...");
-        navigate("/");
-      }, 1000);
+      alert("Successfully logout! Redirecting to login page...");
+      navigate("/");
     } catch (error) {
       console.error("Logout failed", error);
       removeCookies();
@@ -37,6 +39,8 @@ function HomePage() {
         "Logout failed, but local session cleared. Redirecting to login page..."
       );
       navigate("/");
+    } finally {
+      setIsLoggingOut(false); // 👈 işlem bitince durumu sıfırla (gerekirse)
     }
   }
 
@@ -45,10 +49,18 @@ function HomePage() {
       <div className="w-full flex justify-end p-4">
         <Button
           variant="outline"
-          className=" bg-blue-600 hover:bg-blue-700 text-white"
+          className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
           onClick={handleLogout}
+          disabled={isLoggingOut}
         >
-          Logout
+          {isLoggingOut ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Logging out...
+            </>
+          ) : (
+            "Logout"
+          )}
         </Button>
       </div>
       <div className="container mx-auto py-8 px-4">

@@ -54,9 +54,8 @@ export function LoginForm() {
           },
         }
       );
-      console.log(response.data);
+
       const { access_token, refresh_token, user } = response.data;
-      console.log(typeof access_token, typeof refresh_token, typeof user.id);
       setCookies(access_token, refresh_token, user.id);
 
       alert("Login successful! Welcome to the Budget Tracker application.");

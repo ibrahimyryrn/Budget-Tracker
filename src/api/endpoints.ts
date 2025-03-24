@@ -1,6 +1,5 @@
 import axios from "axios";
 import { getCookies } from "../lib/cookies";
-console.log("çalıştı");
 
 export const AddItem = async (item: {
   user_id: string | undefined;
@@ -27,6 +26,7 @@ export const AddItem = async (item: {
 };
 
 export const GetItems = async (user_id: string | undefined) => {
+  console.log("📥 GetItems çağrıldı!", user_id);
   const { access_token } = getCookies();
   const { data } = await axios.get(
     `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/transactions?user_id=eq.${user_id}&select=*`,

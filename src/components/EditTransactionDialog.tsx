@@ -20,6 +20,7 @@ import {
 import { EXPENSE_CATEGORIES, INCOME_CATEGORIES } from "../lib/categories";
 import { useState } from "react";
 import { UpdateItem } from "../api/endpoints";
+import { useTransaction } from "../context/useTransaction";
 
 interface TransactionFormData {
   id: number;
@@ -35,6 +36,7 @@ interface EditTransactionDialogProps {
   transaction: TransactionFormData;
   open: boolean;
   onClose: () => void;
+  refreshTransactions: () => void;
 }
 
 function EditTransactionDialog({
@@ -51,9 +53,10 @@ function EditTransactionDialog({
       : new Date(transaction.transaction_date).toISOString().split("T")[0]
   );
   const [type, setType] = useState(transaction.transaction_type);
+  const { refreshTransactions } = useTransaction();
 
-  const handleSave = () => {
-    UpdateItem({
+  const handleSave = async () => {
+    await UpdateItem({
       id: transaction.id,
       description,
       amount: parseFloat(amount),
@@ -61,6 +64,7 @@ function EditTransactionDialog({
       transaction_date: new Date(date),
       transaction_type: type,
     });
+    refreshTransactions();
     onClose();
   };
 

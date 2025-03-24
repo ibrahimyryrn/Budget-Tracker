@@ -50,9 +50,9 @@ export default function TransactionForm() {
     }
   }, [transactionType]);
 
-  const onSubmit = (data: TransactionFormData) => {
+  const onSubmit = async (data: TransactionFormData) => {
     const { user_id } = getCookies();
-    AddItem({
+    await AddItem({
       user_id,
       transaction_type: data.transactionType,
       description: data.description,
@@ -61,6 +61,7 @@ export default function TransactionForm() {
       transaction_date: data.transactionDate,
       created_at: data.createdAt,
     });
+    refreshTransactions();
     reset({
       transactionType: "income",
       description: "",
@@ -70,7 +71,6 @@ export default function TransactionForm() {
       createdAt: new Date(),
     });
   };
-  refreshTransactions();
 
   return (
     <form

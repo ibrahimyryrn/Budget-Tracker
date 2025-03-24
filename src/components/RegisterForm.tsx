@@ -83,7 +83,7 @@ export function RegisterForm() {
           },
         }
       );
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.log(error);
     } finally {

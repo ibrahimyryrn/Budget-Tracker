@@ -11,33 +11,13 @@ import {
   ArrowDownIcon as ArrowTrendingDownIcon,
   TriangleIcon as ExclamationTriangleIcon,
 } from "lucide-react";
-import { GetItems } from "../api/endpoints";
-import { getCookies } from "../lib/cookies";
-
-interface TransactionFormData {
-  id: number;
-  transaction_type: "income" | "expense";
-  description: string;
-  amount: number;
-  category: string;
-  transaction_date: Date;
-  created_at: Date;
-}
+import { useTransaction } from "../context/useTransaction";
 
 function BudgetSummary() {
-  const [transactions, setTransactions] = useState<TransactionFormData[]>([]);
+  const { transactions } = useTransaction();
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpenses, setTotalExpenses] = useState(0);
   const balance = totalIncome - totalExpenses;
-
-  useEffect(() => {
-    async function fetchData() {
-      const { user_id } = getCookies();
-      const data = await GetItems(user_id);
-      setTransactions(data);
-    }
-    fetchData();
-  }, []); //Add transaction yaptığımda dashboard yenilenmediği için anlık değişim olmuyor !!
 
   useEffect(() => {
     const totalIncome = transactions

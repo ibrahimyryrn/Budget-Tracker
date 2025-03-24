@@ -81,6 +81,7 @@ function TransactionList() {
     if (confirmDelete) {
       await DeleteItem(id);
       /*fetchData(); Silme işleminden sonra verileri yeniden getir*/
+      refreshTransactions();
     }
   };
 
@@ -99,7 +100,7 @@ function TransactionList() {
       new Date(a.transaction_date).getTime()
   );
 
-  refreshTransactions();
+  //refreshTransactions();
 
   return (
     <Card className="border-none shadow-md">
@@ -233,6 +234,7 @@ function TransactionList() {
           transaction={editingTransaction}
           open={!!editingTransaction}
           onClose={() => setEditingTransaction(null)}
+          refreshTransactions={refreshTransactions}
         />
       )}
     </Card>

@@ -14,31 +14,11 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { useEffect, useMemo, useState } from "react";
-import { GetItems } from "../api/endpoints";
-import { getCookies } from "../lib/cookies";
-
-interface TransactionFormData {
-  id: number;
-  transaction_type: "income" | "expense";
-  description: string;
-  amount: number;
-  category: string;
-  transaction_date: Date;
-  created_at: Date;
-}
+import { useMemo } from "react";
+import { useTransaction } from "../context/useTransaction";
 
 function Overview() {
-  const [transactions, setTransactions] = useState<TransactionFormData[]>([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const { user_id } = getCookies();
-      const data = await GetItems(user_id);
-      setTransactions(data);
-    }
-    fetchData();
-  }, []);
+  const { transactions } = useTransaction();
 
   const chartData = useMemo(() => {
     // Group transactions by month
