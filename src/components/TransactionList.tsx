@@ -103,39 +103,37 @@ function TransactionList() {
   //refreshTransactions();
 
   return (
-    <Card className="border-none shadow-md">
+    <Card className="border-none shadow-md w-full">
       <CardHeader className="pb-4">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <CardTitle className="text-xl font-semibold">
             Recent Transactions
           </CardTitle>
-          <div className="relative w-full md:w-64">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 " />
+          <div className="relative w-full sm:w-64">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
               placeholder="Search transactions..."
-              className="pl-10 bg-gray-50  border-none"
+              className="pl-10 bg-gray-50 border border-gray-200 rounded-md"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="rounded-lg overflow-hidden border border-gray-100  ">
+
+      {/* Scrollable Table Container */}
+      <CardContent className="overflow-x-auto">
+        <div className="min-w-[600px]">
           <Table>
-            <TableHeader className="bg-gray-100 ">
-              <TableRow className="bg-gray-100 ">
-                <TableHead className="font-medium text-gray-500">
-                  Date
-                </TableHead>
-                <TableHead className="font-medium text-gray-500">
-                  Description
-                </TableHead>
-                <TableHead className="font- text-gray-500">Category</TableHead>
-                <TableHead className="font-medium text-right text-gray-500">
+            <TableHeader className="bg-gray-100">
+              <TableRow>
+                <TableHead className="text-gray-500">Date</TableHead>
+                <TableHead className="text-gray-500">Description</TableHead>
+                <TableHead className="text-gray-500">Category</TableHead>
+                <TableHead className="text-gray-500 text-right">
                   Amount
                 </TableHead>
-                <TableHead className="font-medium text-right text-gray-500">
+                <TableHead className="text-gray-500 text-right">
                   Actions
                 </TableHead>
               </TableRow>
@@ -166,12 +164,14 @@ function TransactionList() {
                           }`}
                         >
                           {transaction.transaction_type === "income" ? (
-                            <ArrowUpCircle className="h-4 w-4 text-green-500 " />
+                            <ArrowUpCircle className="h-4 w-4 text-green-500" />
                           ) : (
-                            <ArrowDownCircle className="h-4 w-4 text-red-500 " />
+                            <ArrowDownCircle className="h-4 w-4 text-red-500" />
                           )}
                         </div>
-                        {transaction.description}
+                        <span className="truncate max-w-[150px] sm:max-w-none">
+                          {transaction.description}
+                        </span>
                       </div>
                     </TableCell>
                     <TableCell>
@@ -182,8 +182,8 @@ function TransactionList() {
                     <TableCell
                       className={`text-right font-medium ${
                         transaction.transaction_type === "income"
-                          ? "text-green-500 "
-                          : "text-red-500 "
+                          ? "text-green-500"
+                          : "text-red-500"
                       }`}
                     >
                       {transaction.transaction_type === "income" ? "+" : "-"}$
@@ -195,10 +195,9 @@ function TransactionList() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="h-8 w-8 cursor-pointer"
+                            className="h-8 w-8"
                           >
                             <MoreHorizontal className="h-4 w-4" />
-                            <span className="sr-only">Open menu</span>
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent
@@ -229,6 +228,8 @@ function TransactionList() {
           </Table>
         </div>
       </CardContent>
+
+      {/* Edit Dialog */}
       {editingTransaction && (
         <EditTransactionDialog
           transaction={editingTransaction}

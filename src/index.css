@@ -7,6 +7,11 @@
     z-index: 1000 !important;
   }
 
+  /* styles.css veya tailwind.css */
+.react-datepicker-popper {
+  z-index: 60 !important;
+}
+
 :root {
     --radius: 0.625rem;
     --background: oklch(1 0 0);

@@ -75,9 +75,11 @@ export default function TransactionForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-sm mx-auto p-6 bg-white rounded-xl shadow-md"
+      className="w-full max-w-md px-4 sm:px-6 py-6 mx-auto bg-white rounded-xl shadow-md"
     >
-      <h2 className="text-xl font-semibold mb-4">Add New Transaction</h2>
+      <h2 className="text-xl sm:text-2xl font-semibold mb-4">
+        Add New Transaction
+      </h2>
       <label className="block mb-3 font-medium">Transaction Type</label>
 
       <Controller
@@ -150,7 +152,7 @@ export default function TransactionForm() {
               </Select.Trigger>
               <Select.Portal>
                 <Select.Content
-                  className="bg-white shadow-lg rounded-md z-50"
+                  className="bg-white shadow-lg rounded-md z-50 w-full max-w-xs sm:max-w-sm"
                   position="popper"
                   style={{ width: "340px" }}
                 >
@@ -193,6 +195,8 @@ export default function TransactionForm() {
               dateFormat="dd.MM.yyyy"
               className="w-full p-2 border border-transparent focus:border-gray-700 rounded-md bg-gray-100 focus:outline-none"
               wrapperClassName="w-full"
+              popperClassName="z-[60]" // ✅ eklenen satır
+              popperPlacement="bottom"
             />
           )}
         />

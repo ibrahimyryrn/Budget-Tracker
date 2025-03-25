@@ -63,8 +63,8 @@ function Overview() {
       <CardHeader className="pb-2">
         <CardTitle className="text-lg font-medium">Monthly Overview</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="h-[300px]">
+      <CardContent className="overflow-x-auto">
+        <div className="h-[300px] min-w-[320px] sm:min-w-0">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={chartData}
