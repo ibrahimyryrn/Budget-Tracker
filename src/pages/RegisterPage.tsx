@@ -103,7 +103,7 @@ export default function RegisterPage() {
           <div className="md:hidden flex flex-col items-center mb-6">
             <div className="w-24 h-24 mb-2">
               <img
-                src="/budget-logo-white.svg"
+                src="/budget-logo-green.svg"
                 alt="Budget Tracker Logo"
                 className="w-full h-full"
               />
