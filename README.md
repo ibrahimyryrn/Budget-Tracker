@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# 💰 Budget Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, mobile-friendly budget tracking application that helps you manage your income and expenses with ease.
 
-Currently, two official plugins are available:
+## 📸 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://budget-tracker-three-theta.vercel.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+- 🧾 Track your **income** and **expenses**
+- 📊 View balance summary in real time
+- 📅 Filter transactions by date
+- 💻 Auth with **Supabase** (sign up & login)
+- 🌗 **Dark mode** support
+- ⚡ Lightning-fast with **Vite + React + TypeScript**
+- ☁️ Serverless backend using Supabase
+- 📲 Fully **responsive** design with Tailwind CSS
+- ✅ State management with **TanStack Query** (and optional Redux)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+## 🛠️ Tech Stack
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+- **React + TypeScript**
+- **Tailwind CSS**
+- **Supabase** (auth & database)
+- **TanStack Query**
+- **Vite**
+- **Zod + React Hook Form** (for validation, optional)
+- **Redux Toolkit** (optional)
+
+---
+
+## 📦 Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/budget-tracker-app.git
+cd budget-tracker-app
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
